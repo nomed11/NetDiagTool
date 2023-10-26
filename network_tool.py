@@ -22,7 +22,6 @@ def run_command_live_output(command):
         if output:
             print(output.strip())
 
-    # Now, just waiting to get the stderr in case of errors
     _, stderr = process.communicate()
     if process.returncode != 0:
         print_error(stderr)
@@ -67,10 +66,10 @@ def dns_lookup(hostname):
         print_info(f"\nResolving DNS for {hostname}")
         ip_address = socket.gethostbyname(hostname)
         print_success(f"{hostname} resolved to {ip_address}")
-        return ip_address  # Return the resolved IP address
+        return ip_address  # return the resolved IP address
     except socket.gaierror:
         print_error(f"Failed to resolve {hostname}")
-        raise  # Re-raise the exception so it can be caught by your test
+        raise  # re-raise the exception so it can be caught by test_dns_lookup
 
 
 def run_speedtest():
